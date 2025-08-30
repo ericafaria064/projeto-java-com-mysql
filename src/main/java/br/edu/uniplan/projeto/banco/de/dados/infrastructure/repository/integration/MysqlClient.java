@@ -24,12 +24,14 @@ public class MysqlClient {
 
     public static void insert(final Usuario usuario) {
         try {
-            String sql = "insert into usuario (nome) values (?)";
+            String sql = "insert into usuario (codigo, nome, endereco) values (?, ?, ?)";
 
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setString(1, usuario.getNome());
+            ps.setString(1, usuario.getCodigo());
+            ps.setString(2, usuario.getNome());
+            ps.setString(3, usuario.getEndereco());
 
             int executed = ps.executeUpdate();
 

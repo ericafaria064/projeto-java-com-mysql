@@ -66,6 +66,11 @@ public class Application {
                 String nome = jTextFieldNome.getText().trim();
                 String endereco = jTextFieldEndereco.getText().trim();
 
+                if (codigo.isBlank()) {
+                    status.setText("Campo código não poder ser vazio");
+                    throw new IllegalArgumentException();
+                }
+
                 Usuario usuario = new Usuario();
                 usuario.setCodigo(codigo);
                 usuario.setNome(nome);

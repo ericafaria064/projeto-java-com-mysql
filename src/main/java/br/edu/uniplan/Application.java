@@ -55,6 +55,10 @@ public class Application {
         jButton.setBounds(120, 140, 120, 30);
         jFrame.add(jButton);
 
+        JLabel status = new JLabel("");
+        status.setBounds(20, 190, 350, 25);
+        jFrame.add(status);
+
         jButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

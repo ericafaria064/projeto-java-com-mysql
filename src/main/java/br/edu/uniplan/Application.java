@@ -67,7 +67,15 @@ public class Application {
                 String endereco = jTextFieldEndereco.getText().trim();
 
                 if (codigo.isBlank()) {
-                    status.setText("Campo código não poder ser vazio");
+                    status.setText("Campo código deve ser informado.");
+                    throw new IllegalArgumentException();
+                }
+                if (nome.isEmpty()) {
+                    status.setText("Campo nome deve ser informado.");
+                    throw new IllegalArgumentException();
+                }
+                if (endereco.isBlank()) {
+                    status.setText("Campo endereço deve ser informado.");
                     throw new IllegalArgumentException();
                 }
 
@@ -77,6 +85,7 @@ public class Application {
                 usuario.setEndereco(endereco);
 
                 cadastroService.cadastrarUsuario(usuario);
+                status.setText("Cadastro realizado!");
             }
         });
 

@@ -51,15 +51,15 @@ public class Application {
         jFrame.add(jTextFieldEndereco);
 
 
-        JButton jButton = new JButton("Cadastrar");
-        jButton.setBounds(120, 140, 120, 30);
-        jFrame.add(jButton);
+        JButton jButtonCadastrar = new JButton("Cadastrar");
+        jButtonCadastrar.setBounds(120, 140, 120, 30);
+        jFrame.add(jButtonCadastrar);
 
         JLabel status = new JLabel("");
         status.setBounds(20, 190, 350, 25);
         jFrame.add(status);
 
-        jButton.addActionListener(new ActionListener() {
+        jButtonCadastrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String codigo = jTextFieldCodigo.getText().trim();

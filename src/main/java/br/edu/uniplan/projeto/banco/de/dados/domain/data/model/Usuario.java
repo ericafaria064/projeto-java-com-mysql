@@ -2,9 +2,20 @@ package br.edu.uniplan.projeto.banco.de.dados.domain.data.model;
 
 public class Usuario {
 
+    private Integer id;
     private String codigo;
     private String nome;
     private String endereco;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    
 
     public String getCodigo() {
         return codigo;

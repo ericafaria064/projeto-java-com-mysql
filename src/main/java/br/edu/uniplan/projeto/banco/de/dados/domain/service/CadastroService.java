@@ -12,4 +12,20 @@ public class CadastroService {
 
         System.out.println("Cadastro realizado com sucesso!");
     }
+
+    public void alterarUsuario(Usuario usuario) {
+        System.out.println("Alterando usuário: " + usuario.getNome());
+
+        MysqlClient.update(usuario);
+
+        System.out.println("Alteração realizado com sucesso!");
+    }
+
+    public void excluirUsuario(Usuario usuario) {
+        System.out.println("Excluindo usuário: " + usuario.getNome());
+
+        MysqlClient.delete(usuario);
+
+        System.out.println("Exclusão realizado com sucesso!");
+    }
 }

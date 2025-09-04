@@ -14,6 +14,7 @@ class MysqlClientTest {
                 System.out.println("Conectado com sucesso!");
 
                 Usuario usuario = new Usuario();
+                usuario.setId(2);
                 usuario.setCodigo("844");
                 usuario.setNome("Erica Irdes");
                 usuario.setEndereco("Taguatinga");

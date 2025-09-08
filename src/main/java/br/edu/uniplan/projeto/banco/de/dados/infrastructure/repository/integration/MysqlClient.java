@@ -21,12 +21,12 @@ public class MysqlClient {
 
     public static Usuario find(final Usuario usuario) {
         try {
-            String sql = "select * from usuario where id=?";
+            String sql = "select * from usuario where codigo=?";
 
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, usuario.getId());
+            ps.setString(1, usuario.getCodigo());
 
             ResultSet rs = ps.executeQuery();
 
@@ -101,7 +101,9 @@ public class MysqlClient {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
 
-            ps.setInt(1, usuario.getId());
+            Usuario userByDelete = find(usuario);
+
+            ps.setInt(1, userByDelete.getId());
 
             int executed = ps.executeUpdate();
 

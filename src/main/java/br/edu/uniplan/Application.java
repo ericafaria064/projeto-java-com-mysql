@@ -52,8 +52,16 @@ public class Application {
 
 
         JButton jButtonCadastrar = new JButton("Cadastrar");
-        jButtonCadastrar.setBounds(120, 140, 120, 30);
+        jButtonCadastrar.setBounds(20, 140, 100, 30);
         jFrame.add(jButtonCadastrar);
+
+        JButton jButtonAlterar = new JButton("Alterar");
+        jButtonAlterar.setBounds(140, 140, 100, 30);
+        jFrame.add(jButtonAlterar);
+
+        JButton jButtonExcluir = new JButton("Excluir");
+        jButtonExcluir.setBounds(260, 140, 100, 30);
+        jFrame.add(jButtonExcluir);
 
         JLabel status = new JLabel("");
         status.setBounds(20, 190, 350, 25);
@@ -68,15 +76,15 @@ public class Application {
 
                 if (codigo.isBlank()) {
                     status.setText("Campo código deve ser informado.");
-                    throw new IllegalArgumentException();
+                    return;
                 }
                 if (nome.isEmpty()) {
                     status.setText("Campo nome deve ser informado.");
-                    throw new IllegalArgumentException();
+                    return;
                 }
                 if (endereco.isBlank()) {
                     status.setText("Campo endereço deve ser informado.");
-                    throw new IllegalArgumentException();
+                    return;
                 }
 
                 Usuario usuario = new Usuario();
@@ -88,6 +96,53 @@ public class Application {
                 status.setText("Cadastro realizado!");
             }
         });
+
+        jButtonAlterar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String codigo = jTextFieldCodigo.getText().trim();
+                String nome = jTextFieldNome.getText().trim();
+                String endereco = jTextFieldEndereco.getText().trim();
+
+                if (codigo.isBlank() || nome.isBlank() || endereco.isBlank()) {
+                    status.setText("Preencha todos os campos para alterar.");
+                    return;
+                }
+
+                Usuario usuario = new Usuario();
+                usuario.setCodigo(codigo);
+                usuario.setNome(nome);
+                usuario.setEndereco(endereco);
+
+                cadastroService.alterarUsuario(usuario);
+                status.setText("Usuário alterado com sucesso!");
+            }
+        });
+
+        jButtonExcluir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String codigo = jTextFieldCodigo.getText().trim();
+                String nome = jTextFieldNome.getText().trim();
+
+                if (codigo.isBlank()) {
+                    status.setText("Informe o código para excluir.");
+                    return;
+                }
+
+                Usuario usuario = new Usuario();
+                usuario.setCodigo(codigo);
+                usuario.setNome(nome);
+
+                cadastroService.excluirUsuario(usuario);
+                status.setText("Usuário excluído com sucesso!");
+
+                jTextFieldCodigo.setText("");
+                jTextFieldNome.setText("");
+                jTextFieldEndereco.setText("");
+            }
+        });
+
 
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);

@@ -1,5 +1,10 @@
 package br.edu.uniplan.projeto.banco.de.dados.domain.data.model;
 
+/**
+ * @author Erica Irdes de Faria
+ * Disciplina: Linguagem de Programação Java
+ * Faculdade: Uniplan Águas Claras
+ */
 public class Usuario {
 
     private Integer id;

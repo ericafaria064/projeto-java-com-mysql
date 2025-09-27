@@ -3,6 +3,11 @@ package br.edu.uniplan.projeto.banco.de.dados.domain.service;
 import br.edu.uniplan.projeto.banco.de.dados.domain.data.model.Usuario;
 import br.edu.uniplan.projeto.banco.de.dados.infrastructure.repository.integration.MysqlClient;
 
+/**
+ * @author Erica Irdes de Faria
+ * Disciplina: Linguagem de Programação Java
+ * Faculdade: Uniplan Águas Claras
+ */
 public class CadastroService {
 
     public void cadastrarUsuario(Usuario usuario) {

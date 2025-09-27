@@ -4,6 +4,11 @@ import br.edu.uniplan.projeto.banco.de.dados.domain.data.model.Usuario;
 
 import java.sql.*;
 
+/**
+ * @author Erica Irdes de Faria
+ * Disciplina: Linguagem de Programação Java
+ * Faculdade: Uniplan Águas Claras
+ */
 public class MysqlClient {
 
     private static final String url = "jdbc:mysql://localhost:3306/cadastrousuario";

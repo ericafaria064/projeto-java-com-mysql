@@ -140,7 +140,6 @@ public class Application {
             }
         });
 
-
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
     }

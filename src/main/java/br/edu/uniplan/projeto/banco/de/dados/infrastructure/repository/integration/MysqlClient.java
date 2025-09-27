@@ -24,11 +24,12 @@ public class MysqlClient {
         }
     }
 
-    public static Usuario find(final Usuario usuario) {
+    public static Usuario consultarUsuario(final Usuario usuario) {
         try {
+            Connection con = getConnection();
+
             String sql = "select * from usuario where codigo=?";
 
-            Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
 
             ps.setString(1, usuario.getCodigo());
@@ -78,7 +79,7 @@ public class MysqlClient {
 
     public static void alterarUsuario(final Usuario usuario) {
         try {
-            Usuario userBase = find(usuario);
+            Usuario userBase = consultarUsuario(usuario);
             String sql = "update usuario set codigo=?, nome=?, endereco=? where id=?";
 
             Connection con = getConnection();
@@ -106,7 +107,7 @@ public class MysqlClient {
             Connection con = getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
 
-            Usuario userByDelete = find(usuario);
+            Usuario userByDelete = consultarUsuario(usuario);
 
             ps.setInt(1, userByDelete.getId());
 

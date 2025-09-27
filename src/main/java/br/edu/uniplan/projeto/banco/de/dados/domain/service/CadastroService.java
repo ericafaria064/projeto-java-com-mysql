@@ -10,6 +10,11 @@ import br.edu.uniplan.projeto.banco.de.dados.infrastructure.repository.integrati
  */
 public class CadastroService {
 
+    public Usuario consultarUsuario(Usuario usuario) {
+        System.out.println("consultando usuario com codigo: " + usuario.getCodigo());
+        return MysqlClient.consultarUsuario(usuario);
+    }
+
     public void cadastrarUsuario(Usuario usuario) {
         System.out.println("Cadastrando usuário: " + usuario.getNome());
 

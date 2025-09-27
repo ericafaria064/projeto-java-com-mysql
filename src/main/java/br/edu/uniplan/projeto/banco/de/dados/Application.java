@@ -20,7 +20,7 @@ public class Application {
 
         JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(400, 300);
+        jFrame.setSize(400, 350);
         jFrame.setLayout(null);
 
         JLabel jLabelCodigo = new JLabel("Código:");
@@ -60,8 +60,12 @@ public class Application {
         jButtonExcluir.setBounds(260, 140, 100, 30);
         jFrame.add(jButtonExcluir);
 
+        JButton jButtonConsultar = new JButton("Consultar");
+        jButtonConsultar.setBounds(20, 180, 100, 30);
+        jFrame.add(jButtonConsultar);
+
         JLabel status = new JLabel("");
-        status.setBounds(20, 190, 350, 25);
+        status.setBounds(20, 230, 350, 25);
         jFrame.add(status);
 
         jButtonCadastrar.addActionListener(new ActionListener() {
@@ -137,6 +141,35 @@ public class Application {
                 jTextFieldCodigo.setText("");
                 jTextFieldNome.setText("");
                 jTextFieldEndereco.setText("");
+            }
+        });
+
+        jButtonConsultar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String codigo = jTextFieldCodigo.getText().trim();
+
+                if (codigo.isBlank()) {
+                    status.setText("Informe o código para consultar.");
+                    return;
+                }
+
+                Usuario usuarioConsulta = new Usuario();
+                usuarioConsulta.setCodigo(codigo);
+
+                Usuario usuarioEncontrado = cadastroService.consultarUsuario(usuarioConsulta);
+
+                if (usuarioEncontrado.getCodigo() != null && !usuarioEncontrado.getCodigo().isEmpty()) {
+                    jTextFieldNome.setText(usuarioEncontrado.getNome());
+                    jTextFieldEndereco.setText(usuarioEncontrado.getEndereco());
+                    status.setText("Usuário encontrado!");
+                    System.out.println("Usuario " + usuarioEncontrado.getNome() + " encontrado!");
+                } else {
+                    jTextFieldNome.setText("");
+                    jTextFieldEndereco.setText("");
+                    status.setText("Usuário não encontrado!");
+                    System.out.println("usuario não encontrado!");
+                }
             }
         });
 

@@ -1,9 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
- */
-
-package br.edu.uniplan;
+package br.edu.uniplan.projeto.banco.de.dados;
 
 import br.edu.uniplan.projeto.banco.de.dados.domain.data.model.Usuario;
 import br.edu.uniplan.projeto.banco.de.dados.domain.service.CadastroService;
@@ -13,7 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @author Usuario
+ * @author Erica Irdes de Faria
+ * Disciplina: Linguagem de Programação Java
+ * Faculdade: Uniplan Águas Claras
  */
 public class Application {
 

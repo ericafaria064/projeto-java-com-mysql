@@ -55,7 +55,7 @@ public class MysqlClient {
         }
     }
 
-    public static void insert(final Usuario usuario) {
+    public static void cadastrarUsuario(final Usuario usuario) {
         try {
             String sql = "insert into usuario (codigo, nome, endereco) values (?, ?, ?)";
 
@@ -76,7 +76,7 @@ public class MysqlClient {
         }
     }
 
-    public static void update(final Usuario usuario) {
+    public static void alterarUsuario(final Usuario usuario) {
         try {
             Usuario userBase = find(usuario);
             String sql = "update usuario set codigo=?, nome=?, endereco=? where id=?";
@@ -99,7 +99,7 @@ public class MysqlClient {
         }
     }
 
-    public static void delete(final Usuario usuario) {
+    public static void excluirUsuario(final Usuario usuario) {
         try {
             String sql = "delete from usuario where id = ?";
 

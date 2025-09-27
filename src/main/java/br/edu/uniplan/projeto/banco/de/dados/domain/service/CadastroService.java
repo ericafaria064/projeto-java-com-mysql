@@ -13,7 +13,7 @@ public class CadastroService {
     public void cadastrarUsuario(Usuario usuario) {
         System.out.println("Cadastrando usuário: " + usuario.getNome());
 
-        MysqlClient.insert(usuario);
+        MysqlClient.cadastrarUsuario(usuario);
 
         System.out.println("Cadastro realizado com sucesso!");
     }
@@ -21,7 +21,7 @@ public class CadastroService {
     public void alterarUsuario(Usuario usuario) {
         System.out.println("Alterando usuário: " + usuario.getNome());
 
-        MysqlClient.update(usuario);
+        MysqlClient.alterarUsuario(usuario);
 
         System.out.println("Alteração realizado com sucesso!");
     }
@@ -29,7 +29,7 @@ public class CadastroService {
     public void excluirUsuario(Usuario usuario) {
         System.out.println("Excluindo usuário: " + usuario.getNome());
 
-        MysqlClient.delete(usuario);
+        MysqlClient.excluirUsuario(usuario);
 
         System.out.println("Exclusão realizado com sucesso!");
     }

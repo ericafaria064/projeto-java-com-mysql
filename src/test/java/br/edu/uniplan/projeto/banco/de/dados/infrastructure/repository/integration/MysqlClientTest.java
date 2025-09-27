@@ -19,7 +19,7 @@ class MysqlClientTest {
                 usuario.setNome("Erica Irdes");
                 usuario.setEndereco("Taguatinga");
 
-                MysqlClient.insert(usuario);
+                MysqlClient.cadastrarUsuario(usuario);
             } else {
                 System.out.println("Falha na conexão!");
             }

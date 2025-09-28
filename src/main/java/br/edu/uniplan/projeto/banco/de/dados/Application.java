@@ -20,7 +20,7 @@ public class Application {
 
         JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jFrame.setSize(400, 350);
+        jFrame.setSize(450, 400);
         jFrame.setLayout(null);
 
         JLabel jLabelCodigo = new JLabel("Código:");
@@ -48,21 +48,21 @@ public class Application {
         jFrame.add(jTextFieldEndereco);
 
 
+        JButton jButtonConsultar = new JButton("Consultar");
+        jButtonConsultar.setBounds(125, 140, 100, 30);
+        jFrame.add(jButtonConsultar);
+
         JButton jButtonCadastrar = new JButton("Cadastrar");
-        jButtonCadastrar.setBounds(20, 140, 100, 30);
+        jButtonCadastrar.setBounds(235, 140, 100, 30);
         jFrame.add(jButtonCadastrar);
 
         JButton jButtonAlterar = new JButton("Alterar");
-        jButtonAlterar.setBounds(140, 140, 100, 30);
+        jButtonAlterar.setBounds(125, 180, 100, 30);
         jFrame.add(jButtonAlterar);
 
         JButton jButtonExcluir = new JButton("Excluir");
-        jButtonExcluir.setBounds(260, 140, 100, 30);
+        jButtonExcluir.setBounds(235, 180, 100, 30);
         jFrame.add(jButtonExcluir);
-
-        JButton jButtonConsultar = new JButton("Consultar");
-        jButtonConsultar.setBounds(20, 180, 100, 30);
-        jFrame.add(jButtonConsultar);
 
         JLabel status = new JLabel("");
         status.setBounds(20, 230, 350, 25);

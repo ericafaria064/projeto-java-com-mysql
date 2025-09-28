@@ -67,12 +67,16 @@ public class Application {
         status.setBounds(20, 230, 350, 25);
         jFrame.add(status);
 
+        // Ação do botão consultar
         jButtonConsultar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String codigo = jTextFieldCodigo.getText().trim();
-
+                
+                // Validar se código é vazio ou nulo
                 if (codigo.isBlank()) {
+                    
+                    // Adicionat o texto no campo status
                     status.setText("Informe o código para consultar.");
                     return;
                 }

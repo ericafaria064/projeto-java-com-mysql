@@ -6,12 +6,14 @@ package br.edu.uniplan.projeto.banco.de.dados.domain.data.model;
  * Faculdade: Uniplan Águas Claras
  */
 public class Usuario {
-
+    
+    // Atributos da classe
     private Integer id;
     private String codigo;
     private String nome;
     private String endereco;
 
+    // Métodos get e set    
     public Integer getId() {
         return id;
     }

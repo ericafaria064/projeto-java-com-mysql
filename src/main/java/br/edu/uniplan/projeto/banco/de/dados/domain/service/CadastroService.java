@@ -10,15 +10,17 @@ import br.edu.uniplan.projeto.banco.de.dados.infrastructure.repository.integrati
  */
 public class CadastroService {
 
+    private static final MysqlClient mysqlClient = new MysqlClient();
+
     public Usuario consultarUsuario(Usuario usuario) {
         System.out.println("consultando usuario com codigo: " + usuario.getCodigo());
-        return MysqlClient.consultarUsuario(usuario);
+        return mysqlClient.consultarUsuario(usuario);
     }
 
     public void cadastrarUsuario(Usuario usuario) {
         System.out.println("Cadastrando usuário: " + usuario.getNome());
 
-        MysqlClient.cadastrarUsuario(usuario);
+        mysqlClient.cadastrarUsuario(usuario);
 
         System.out.println("Cadastro realizado com sucesso!");
     }
@@ -26,7 +28,7 @@ public class CadastroService {
     public void alterarUsuario(Usuario usuario) {
         System.out.println("Alterando usuário: " + usuario.getNome());
 
-        MysqlClient.alterarUsuario(usuario);
+        mysqlClient.alterarUsuario(usuario);
 
         System.out.println("Alteração realizado com sucesso!");
     }
@@ -34,7 +36,7 @@ public class CadastroService {
     public void excluirUsuario(Usuario usuario) {
         System.out.println("Excluindo usuário: " + usuario.getNome());
 
-        MysqlClient.excluirUsuario(usuario);
+        mysqlClient.excluirUsuario(usuario);
 
         System.out.println("Exclusão realizado com sucesso!");
     }

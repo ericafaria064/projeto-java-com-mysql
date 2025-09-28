@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
  */
 public class Application {
 
-    public static void main(String[] args) {
+    private static CadastroService cadastroService;
 
-        CadastroService cadastroService = new CadastroService();
+    public static void main(String[] args) {
 
         JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,7 +47,6 @@ public class Application {
         jTextFieldEndereco.setBounds(120, 100, 200, 25);
         jFrame.add(jTextFieldEndereco);
 
-
         JButton jButtonConsultar = new JButton("Consultar");
         jButtonConsultar.setBounds(125, 140, 100, 30);
         jFrame.add(jButtonConsultar);
@@ -67,6 +66,36 @@ public class Application {
         JLabel status = new JLabel("");
         status.setBounds(20, 230, 350, 25);
         jFrame.add(status);
+
+        jButtonConsultar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String codigo = jTextFieldCodigo.getText().trim();
+
+                if (codigo.isBlank()) {
+                    status.setText("Informe o código para consultar.");
+                    return;
+                }
+
+                Usuario usuarioConsulta = new Usuario();
+                usuarioConsulta.setCodigo(codigo);
+
+                cadastroService = new CadastroService();
+                Usuario usuarioEncontrado = cadastroService.consultarUsuario(usuarioConsulta);
+
+                if (usuarioEncontrado.getCodigo() != null && !usuarioEncontrado.getCodigo().isEmpty()) {
+                    jTextFieldNome.setText(usuarioEncontrado.getNome());
+                    jTextFieldEndereco.setText(usuarioEncontrado.getEndereco());
+                    status.setText("Usuário encontrado!");
+                    System.out.println("Usuario " + usuarioEncontrado.getNome() + " encontrado!");
+                } else {
+                    jTextFieldNome.setText("");
+                    jTextFieldEndereco.setText("");
+                    status.setText("Usuário não encontrado!");
+                    System.out.println("usuario não encontrado!");
+                }
+            }
+        });
 
         jButtonCadastrar.addActionListener(new ActionListener() {
             @Override
@@ -93,6 +122,7 @@ public class Application {
                 usuario.setNome(nome);
                 usuario.setEndereco(endereco);
 
+                cadastroService = new CadastroService();
                 cadastroService.cadastrarUsuario(usuario);
                 status.setText("Cadastro realizado!");
             }
@@ -115,6 +145,7 @@ public class Application {
                 usuario.setNome(nome);
                 usuario.setEndereco(endereco);
 
+                cadastroService = new CadastroService();
                 cadastroService.alterarUsuario(usuario);
                 status.setText("Usuário alterado com sucesso!");
             }
@@ -135,41 +166,13 @@ public class Application {
                 usuario.setCodigo(codigo);
                 usuario.setNome(nome);
 
+                cadastroService = new CadastroService();
                 cadastroService.excluirUsuario(usuario);
                 status.setText("Usuário excluído com sucesso!");
 
                 jTextFieldCodigo.setText("");
                 jTextFieldNome.setText("");
                 jTextFieldEndereco.setText("");
-            }
-        });
-
-        jButtonConsultar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String codigo = jTextFieldCodigo.getText().trim();
-
-                if (codigo.isBlank()) {
-                    status.setText("Informe o código para consultar.");
-                    return;
-                }
-
-                Usuario usuarioConsulta = new Usuario();
-                usuarioConsulta.setCodigo(codigo);
-
-                Usuario usuarioEncontrado = cadastroService.consultarUsuario(usuarioConsulta);
-
-                if (usuarioEncontrado.getCodigo() != null && !usuarioEncontrado.getCodigo().isEmpty()) {
-                    jTextFieldNome.setText(usuarioEncontrado.getNome());
-                    jTextFieldEndereco.setText(usuarioEncontrado.getEndereco());
-                    status.setText("Usuário encontrado!");
-                    System.out.println("Usuario " + usuarioEncontrado.getNome() + " encontrado!");
-                } else {
-                    jTextFieldNome.setText("");
-                    jTextFieldEndereco.setText("");
-                    status.setText("Usuário não encontrado!");
-                    System.out.println("usuario não encontrado!");
-                }
             }
         });
 

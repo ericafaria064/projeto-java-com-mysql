@@ -76,7 +76,7 @@ public class Application {
                 // Validar se código é vazio ou nulo
                 if (codigo.isBlank()) {
                     
-                    // Adicionat o texto no campo status
+                    // Adicionar o texto no campo status
                     status.setText("Informe o código para consultar.");
                     return;
                 }
